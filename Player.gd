@@ -1,11 +1,11 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const MOVE_SPEED = 300
 
-onready var raycast = $RayCast2D
+@onready var raycast = $RayCast2D
 
 func _ready():
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 	get_tree().call_group("zombies", "set_player", self)
 
 func _physics_process(delta):
